@@ -1,0 +1,8 @@
+name = "c-lab"
+pages_build_output_dir = "public"
+compatibility_date = "2026-11-25"
+
+[vars]
+JUDGE0_URL = "https://ce.judge0.com"
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+DEEPSEEK_MODEL = "deepseek-chat"
