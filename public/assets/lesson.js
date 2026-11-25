@@ -221,7 +221,8 @@ function setAI(open) {
   pane.classList.toggle('open', !!open && window.innerWidth < 1100);
   document.querySelector('.lesson-workspace').classList.toggle('ai-hidden', !open);
   localStorage.setItem('clab.aiOpen', open ? '1' : '0');
-  qs('chatToggle').textContent = open ? 'ซ่อน AI' : 'AI';
+  qs('chatToggle').textContent = open ? 'ซ่อน' : 'AI';
+  qs('chatToggle').title = open ? 'ซ่อนแผง AI' : 'เปิดแผง AI';
 }
 function hideAutocomplete() {
   qs('autocomplete').classList.add('hidden');
