@@ -381,7 +381,7 @@ const server = http.createServer(async (req, res) => {
         if (DEMO_MODE) {
           return json(res, 200, { users: demoDb.users.length, lessons: demoDb.lessons.length, published: demoDb.lessons.filter(l => l.is_published !== false).length, completions: Object.values(demoDb.progress).reduce((n, o) => n + Object.values(o).filter(x => x.status === 'completed').length, 0) });
         }
-        const [profiles, lessons, progress] = await Promise.all([sb('profiles?select=id,role'), sb('lessons?select=id,is_published'), sb('progress?status=eq.completed&select=id')]);
+        const [profiles, lessons, progress] = await Promise.all([sb('profiles?select=id,role'), sb('lessons?select=id,is_published'), sb('progress?status=eq.completed&select=user_id')]);
         return json(res, 200, { users: profiles.length, lessons: lessons.length, published: lessons.filter(l => l.is_published).length, completions: progress.length });
       }
       if (p === '/api/admin/lessons' && req.method === 'GET') {
