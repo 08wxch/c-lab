@@ -4,6 +4,8 @@ let mode = 'login';
 let sb = null;
 
 async function boot() {
+  const q = new URLSearchParams(location.search);
+  if (q.get('email')) document.getElementById('email').value = q.get('email');
   if (CC.token) { location.replace('/learn.html'); return; }
   const cfg0 = await getConfig();
   if (cfg0.demoMode && new URLSearchParams(location.search).get('demo') === '1') {
