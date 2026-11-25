@@ -32,7 +32,7 @@ Primary use is a personal/local browser session on macOS. The admin may later ex
 Follow the 02._.mock visual language: warm paper, near-black ink, IBM Plex Sans Thai + Kanit, restrained rules, generous margins, compact operational controls. No emoji-as-icon. The app should feel like a quiet study desk, not a gamified dashboard.
 
 ## Evidence on Hand
-Source books and slides in `/Users/08._.wxch/Documents/C 语言/`; review questions in `5-7.2节复习题.pdf`; visual reference in `/Users/08._.wxch/Documents/tas csca mock test/`.
+Source books, slides, and review questions are in the local course workspace; the visual reference is the 02._.mock study-app language.
 
 ## Product Principles
 1. The current problem is always visible; the AI never answers out of context.
