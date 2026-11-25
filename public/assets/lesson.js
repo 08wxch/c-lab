@@ -217,12 +217,21 @@ async function sendAI(textOverride) {
 
 function setAI(open) {
   const pane = qs('aiPane');
+  const ws = document.querySelector('.lesson-workspace');
   pane.classList.toggle('closed', !open);
   pane.classList.toggle('open', !!open && window.innerWidth < 1100);
-  document.querySelector('.lesson-workspace').classList.toggle('ai-hidden', !open);
+  pane.hidden = !open;
+  pane.setAttribute('aria-hidden', open ? 'false' : 'true');
+  ws.classList.toggle('ai-hidden', !open);
+  if (window.innerWidth >= 1100) {
+    ws.style.gridTemplateColumns = open ? '' : 'minmax(290px,340px) minmax(0,1fr)';
+  } else {
+    ws.style.gridTemplateColumns = '';
+  }
   localStorage.setItem('clab.aiOpen', open ? '1' : '0');
-  qs('chatToggle').textContent = open ? 'ซ่อน' : 'AI';
-  qs('chatToggle').title = open ? 'ซ่อนแผง AI' : 'เปิดแผง AI';
+  qs('chatToggle').textContent = open ? 'ปิด AI' : 'AI';
+  qs('chatToggle').title = open ? 'ปิดแผง AI' : 'เปิดแผง AI';
+  qs('chatToggle').setAttribute('aria-pressed', open ? 'true' : 'false');
 }
 function hideAutocomplete() {
   qs('autocomplete').classList.add('hidden');
