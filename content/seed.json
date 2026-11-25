@@ -1,0 +1,279 @@
+{
+  "lessons": [
+    {
+      "id": "les-1",
+      "slug": "functions",
+      "chapter": "5",
+      "title": "ฟังก์ชัน: ห่อความคิดให้เรียกใช้ซ้ำ",
+      "summary": "ฟังก์ชันคือสัญญาระหว่างผู้เรียกกับงานหนึ่งงาน — รับอะไร คืนอะไร และแก้ตัวแปรใดได้",
+      "content_md": "# ฟังก์ชัน: ห่อความคิดให้เรียกใช้ซ้ำ\n\nฟังก์ชันที่ดีไม่ได้เริ่มจากการพิมพ์ `{` แต่เริ่มจากคำถามว่า **งานนี้รับอะไร และคืนอะไร**\n\n## 1. โครงของฟังก์ชัน\n\n```c\ndouble cylinder(double r, double h)\n{\n    return 3.1415926 * r * r * h;\n}\n```\n\n- `double` หน้า 이름 คือชนิดของค่าที่คืน\n- `r`, `h` คือ **พารามิเตอร์รูปนัย (形参)**\n- ค่าที่ส่งมาตอนเรียกคือ **อาร์กิวเมนต์จริง (实参)**\n- `return` ส่งค่ากลับและจบฟังก์ชันทันที\n\n## 2. ประกาศก่อนใช้\n\nถ้านิยามฟังก์ชันไว้หลัง `main` ต้องมีต้นแบบ:\n\n```c\ndouble cylinder(double r, double h);\n\nint main(void) {\n    printf(\"%.3f\\n\", cylinder(2, 5));\n    return 0;\n}\n```\n\n## 3. C ส่งค่าเป็นสำเนา\n\n```c\nvoid change(int x) { x = 100; }\n\nint main(void) {\n    int a = 5;\n    change(a);\n    printf(\"%d\\n\", a);   /* ยังเป็น 5 */\n    return 0;\n}\n```\n\nถ้าต้องการให้ฟังก์ชันแก้ตัวแปรจริง ต้องส่ง **ที่อยู่** (pointer) ซึ่งจะเรียนในบทที่ 8\n\n## 4. ฟังก์ชันที่ไม่มีค่าคืน\n\n`void` หมายถึงไม่ส่งค่ากลับ ไม่ใช่ไม่มีงานทำ:\n\n```c\nvoid line(int n) {\n    for (int i = 0; i < n; i++) putchar('-');\n    putchar('\\n');\n}\n```\n\n> จำ: `void` ใช้ `return;` ได้ แต่ห้าม `return ค่า;`\n\n## 5. ลองเขียน\n\nเขียน `sum_diff` ให้คำนวณผลบวกและผลต่างของ `op1`, `op2` ผ่าน pointer `psum`, `pdiff`",
+      "starter_code": "#include <stdio.h>\n\nvoid sum_diff(float op1, float op2, float *psum, float *pdiff);\n\nint main(void)\n{\n    float a, b, sum, diff;\n    scanf(\"%f %f\", &a, &b);\n    sum_diff(a, b, &sum, &diff);\n    printf(\"The sum is %.2f\\nThe diff is %.2f\\n\", sum, diff);\n    return 0;\n}\n\n/* เขียนฟังก์ชันของคุณตรงนี้ */",
+      "expected_output": "",
+      "stdin": "4 6",
+      "challenge_md": "เขียน `sum_diff` ให้ผลบวกและผลต่างถูกต้อง ลองรันด้วย `4 6`",
+      "order_index": 1,
+      "is_published": true,
+      "questions": [
+        {
+          "id": "q1-1",
+          "type": "mcq",
+          "prompt_md": "ฟังก์ชันที่ไม่ใช่ `void` ต้องมีสิ่งใด?",
+          "choices": [
+            "มี `return` อย่างน้อยหนึ่งจุด",
+            "ต้องมี `printf`",
+            "ต้องมีพารามิเตอร์",
+            "ต้องอยู่หลัง `main`"
+          ],
+          "answer": 0,
+          "explanation_md": "ฟังก์ชัน non-void ต้องมี `return` ทุกเส้นทางที่ไปถึงจุดสิ้นสุด"
+        },
+        {
+          "id": "q1-2",
+          "type": "mcq",
+          "prompt_md": "การส่งค่าแบบ by value หมายถึงอะไร?",
+          "choices": [
+            "ส่งสำเนาไปให้ฟังก์ชัน",
+            "ส่งที่อยู่ของตัวแปร",
+            "ส่งชื่อฟังก์ชัน",
+            "ส่งค่าคงที่เท่านั้น"
+          ],
+          "answer": 0,
+          "explanation_md": "C คัดลอกค่าลงพารามิเตอร์ การแก้ในฟังก์ชันจึงไม่กระทบตัวแปรเดิม"
+        },
+        {
+          "id": "q1-3",
+          "type": "mcq",
+          "prompt_md": "ข้อใดเป็นต้นแบบฟังก์ชันที่ถูกต้อง?",
+          "choices": [
+            "`int f(int);`",
+            "`int f(int a, b);`",
+            "`int f(int) = 0;`",
+            "`f(int);`"
+          ],
+          "answer": 0,
+          "explanation_md": "ต้นแบบละชื่อพารามิเตอร์ได้ แต่ต้องมีชนิด และต้องมีชนิดค่าคืน"
+        }
+      ]
+    },
+    {
+      "id": "les-2",
+      "slug": "types",
+      "chapter": "6",
+      "title": "数据类型: บิตที่กลายเป็นความหมาย",
+      "summary": "เริ่มจากหน่วยความจำ แล้วเข้าใจว่าทำไม int ล้น, char เก็บตัวอักษร, และ double จึงไม่แม่น",
+      "content_md": "# 数据类型: บิตที่กลายเป็นความหมาย\n\n## 1. ชนิดข้อมูลบอกสองอย่าง\n\n1. ใช้พื้นที่กี่ไบต์\n2. ตีความบิตนั้นเป็นค่าอะไร\n\n| ชนิด | ขนาดทั่วไป | ช่วง |\n|---|---:|---|\n| `char` | 1 | -128..127 หรือ 0..255 |\n| `int` | 4 | -2.1 พันล้าน..2.1 พันล้าน |\n| `double` | 8 | ทศนิยมประมาณ 15 หลัก |\n\n## 2. จำนวนเต็มลบใช้ 补码\n\nสมมติ 8 บิต:\n\n```text\n+5   = 0000 0101\n-5   = 1111 1011   (取反 + 1)\n-1   = 1111 1111\n```\n\n补码ทำให้ `-1 + 1 = 0` โดยไม่ต้องมีวงจรลบแยก\n\n## 3. char คือรหัสจำนวนเต็ม\n\n```c\nchar c = 'A';\nprintf(\"%c %d\\n\", c, c);   /* A 65 */\nprintf(\"%d\\n\", '9' - '0'); /* 9 */\n```\n\n`'9'` ไม่เท่ากับ `9`: ตัวแรกคือรหัส 57 อีกตัวคือเก้า\n\n## 4. float ไม่แม่นเสมอ\n\n```c\n0.1 + 0.2 == 0.3   /* อาจเป็นเท็จ */\n```\n\nเพราะ 0.1 แทนใน binary ไม่ได้เป๊ะ  \nเทียบด้วย `fabs(a-b) < 1e-9` แทน\n\n## 5. ลองเขียน\n\nแปลงตัวอักษรตัวเล็กเป็นตัวใหญ่โดยใช้ `c - 'a' + 'A'`",
+      "starter_code": "#include <stdio.h>\n\nint main(void)\n{\n    char c;\n    scanf(\" %c\", &c);\n    /* แปลง c เป็นตัวพิมพ์ใหญ่แล้วพิมพ์ */\n    return 0;\n}",
+      "expected_output": "",
+      "stdin": "a",
+      "challenge_md": "อ่านตัวอักษรหนึ่งตัว ถ้าเป็น a-z ให้พิมพ์ตัวพิมพ์ใหญ่ ถ้าไม่ใช่ให้พิมพ์เดิม",
+      "order_index": 2,
+      "is_published": true,
+      "questions": [
+        {
+          "id": "q2-1",
+          "type": "mcq",
+          "prompt_md": "`'A'` กับ `65` เกี่ยวข้องกันอย่างไร?",
+          "choices": [
+            "`'A'` มีรหัส ASCII 65",
+            "`'A'` มีค่า 65 บิต",
+            "ไม่เกี่ยวข้องกัน",
+            "`'A'` เก็บเป็นสตริง"
+          ],
+          "answer": 0,
+          "explanation_md": "char เก็บรหัสจำนวนเต็มของตัวอักษร"
+        },
+        {
+          "id": "q2-2",
+          "type": "mcq",
+          "prompt_md": "ข้อใดอ่าน double ด้วย scanf ได้ถูกต้อง?",
+          "choices": [
+            "`scanf(\"%lf\", &x);`",
+            "`scanf(\"%f\", &x);`",
+            "`scanf(\"%d\", &x);`",
+            "`scanf(\"%c\", &x);`"
+          ],
+          "answer": 0,
+          "explanation_md": "double ต้องใช้ `%lf` ใน scanf"
+        },
+        {
+          "id": "q2-3",
+          "type": "mcq",
+          "prompt_md": "`sizeof('A')` ในภาษา C ได้เท่าไรโดยทั่วไป?",
+          "choices": [
+            "4",
+            "1",
+            "2",
+            "8"
+          ],
+          "answer": 0,
+          "explanation_md": "ใน C character constant มีชนิด int จึงมักได้ 4"
+        }
+      ]
+    },
+    {
+      "id": "les-3",
+      "slug": "operators",
+      "chapter": "6",
+      "title": "运算符: ลำดับและ Short-circuit",
+      "summary": "เข้าใจ precedence, การลัดวงจร และ bitwise พร้อมกับดักที่ออกสอบบ่อย",
+      "content_md": "# 运算符: ลำดับและ Short-circuit\n\n## 1. Precedence ที่ต้องใช้\n\n```text\n()  >  unary  >  * / %  >  + -  >  << >>  >  compare\n    >  == !=  >  &  >  ^  >  |  >  &&  >  ||  >  ?:  >  =  >  ,\n```\n\n### ตัวอย่าง\n\n```c\n3 << 2 + 1      /* 3 << 3 = 24 */\nx & 1 == 0      /* x & (1==0) — ผิดเจตนา */\na < b < c       /* (a<b) < c — ไม่ใช่ช่วง */\n```\n\n## 2. `=` กับ `==`\n\n```c\nif (x = 0)   /* กำหนดค่า x=0 แล้วเงื่อนไขเท็จ */\nif (x == 0)  /* เปรียบเทียบ */\n```\n\n## 3. `&&` และ `||` ลัดวงจร\n\n```c\nif (i != 0 && 10 / i > 1) { ... }\n```\n\nถ้า `i == 0` ด้านซ้ายเท็จ ด้านขวาไม่ถูกทำ จึงไม่หารด้วยศูนย์\n\n```c\nint b = 0;\nif (1 || b++) { }   /* b ยังเป็น 0 */\n```\n\n## 4. Bitwise\n\n```c\n6 & 3   /* 2 */\n6 | 3   /* 7 */\n6 ^ 3   /* 5 */\n~6      /* -7 */\n1 << 3  /* 8 */\n```\n\n`x & 1` ใช้ตรวจคี่/คู่; `x >> 1` หารสอง\n\n## 5. ลองเขียน\n\nเขียนโปรแกรมอ่าน `x` แล้วพิมพ์ `x & 1` กับ `x >> 1`",
+      "starter_code": "#include <stdio.h>\n\nint main(void)\n{\n    int x;\n    scanf(\"%d\", &x);\n    /* พิมพ์ x & 1 และ x >> 1 */\n    return 0;\n}",
+      "expected_output": "",
+      "stdin": "6",
+      "challenge_md": "อ่านจำนวนเต็มแล้วพิมพ์ `x & 1` กับ `x >> 1` คั่นด้วยช่องว่าง",
+      "order_index": 3,
+      "is_published": true,
+      "questions": [
+        {
+          "id": "q3-1",
+          "type": "mcq",
+          "prompt_md": "`3 << 2 + 1` มีค่าเท่าไร?",
+          "choices": [
+            "24",
+            "9",
+            "12",
+            "32"
+          ],
+          "answer": 0,
+          "explanation_md": "`+` ก่อน `<<`: 3 << 3 = 24"
+        },
+        {
+          "id": "q3-2",
+          "type": "mcq",
+          "prompt_md": "`1 || b++` เมื่อ `b=0` แล้ว b เป็นเท่าไร?",
+          "choices": [
+            "0",
+            "1",
+            "2",
+            "ไม่กำหนด"
+          ],
+          "answer": 0,
+          "explanation_md": "ด้านซ้ายจริง จึง short-circuit ไม่ทำ b++"
+        },
+        {
+          "id": "q3-3",
+          "type": "mcq",
+          "prompt_md": "`x & 1 == 0` ถูกตีความว่าอย่างไร?",
+          "choices": [
+            "`x & (1 == 0)`",
+            "`(x & 1) == 0`",
+            "`x & 1 & 0`",
+            "ผิดไวยากรณ์"
+          ],
+          "answer": 0,
+          "explanation_md": "`==` มี precedence สูงกว่า `&`"
+        }
+      ]
+    },
+    {
+      "id": "les-4",
+      "slug": "arrays",
+      "chapter": "7",
+      "title": "数组: ข้อมูลหลายตัวที่มี下标",
+      "summary": "อาร์เรย์คือพื้นที่ต่อเนื่องและดัชนีเริ่มที่ 0 — เข้าใจเรื่องนี้แล้ว 7.1 จะง่ายมาก",
+      "content_md": "# 数组: ข้อมูลหลายตัวที่มี下标\n\n## 1. ประกาศและเข้าถึง\n\n```c\nint a[5] = {10, 20, 30, 40, 50};\n\nprintf(\"%d\\n\", a[0]);   /* 10 */\nprintf(\"%d\\n\", a[4]);   /* 50 */\n```\n\nอาร์เรย์ `n` ช่องมี下标 `0..n-1`  \n`a[n]` คือการเขียนนอกขอบเขต\n\n## 2. หน่วยความจำเรียงติดกัน\n\n```text\na[0]  a[1]  a[2]  a[3]  a[4]\n1000  1004  1008  1012  1016\n```\n\n`sizeof(a)` = ทั้งอาร์เรย์  \n`sizeof(a[0])` = หนึ่งช่อง  \n`sizeof(a) / sizeof(a[0])` = จำนวนสมาชิก\n\n## 3. 2 มิติ\n\n```c\nint m[3][4];   /* 3 แถว 4 คอลัมน์ */\n```\n\nเก็บแบบ row-major: `m[0][0], m[0][1], ...`\n\n## 4. ลองเขียน\n\nอ่าน `n` และจำนวนอีก `n` ตัว แล้วพิมพ์ย้อนกลับ โดยไม่มีช่องว่างท้ายบรรทัด",
+      "starter_code": "#include <stdio.h>\n#define MAXN 10\n\nint main(void)\n{\n    int n, i, a[MAXN];\n    scanf(\"%d\", &n);\n    for (i = 0; i < n; i++)\n        scanf(\"%d\", &a[i]);\n\n    /* พิมพ์ย้อนกลับ */\n\n    return 0;\n}",
+      "expected_output": "5 4 3 2 1",
+      "stdin": "5\n1 2 3 4 5",
+      "challenge_md": "อ่าน n แล้วอ่านอีก n จำนวน พิมพ์ย้อนกลับโดยมีช่องว่างระหว่างตัวเลข ไม่มีช่องว่างท้าย",
+      "order_index": 4,
+      "is_published": true,
+      "questions": [
+        {
+          "id": "q4-1",
+          "type": "mcq",
+          "prompt_md": "`int a[5]` มีสมาชิกกี่ตัว?",
+          "choices": [
+            "5",
+            "4",
+            "6",
+            "ไม่กำหนด"
+          ],
+          "answer": 0,
+          "explanation_md": "ความยาว 5 คือจำนวนช่อง; ดัชนี 0..4"
+        },
+        {
+          "id": "q4-2",
+          "type": "mcq",
+          "prompt_md": "`sizeof(a)/sizeof(a[0])` ใช้ทำอะไร?",
+          "choices": [
+            "หาจำนวนสมาชิกอาร์เรย์",
+            "หาค่าเฉลี่ย",
+            "หาที่อยู่",
+            "เรียงลำดับ"
+          ],
+          "answer": 0,
+          "explanation_md": "ขนาดทั้งอาร์เรย์หารขนาดหนึ่งช่อง"
+        },
+        {
+          "id": "q4-3",
+          "type": "mcq",
+          "prompt_md": "`int a[3][4]` มีสมาชิกกี่ตัว?",
+          "choices": [
+            "12",
+            "7",
+            "3",
+            "4"
+          ],
+          "answer": 0,
+          "explanation_md": "3 แถว × 4 คอลัมน์ = 12"
+        }
+      ]
+    },
+    {
+      "id": "les-5",
+      "slug": "pointers",
+      "chapter": "8",
+      "title": "指针: ที่อยู่คือกุญแจ",
+      "summary": "เข้าใจ & และ * แล้วจะเห็นว่าทำไมฟังก์ชันจึงแก้ตัวแปรจริงได้",
+      "content_md": "# 指针: ที่อยู่คือกุญแจ\n\n## 1. `&` เอาที่อยู่, `*` ตามไปที่ที่อยู่\n\n```c\nint a = 3;\nint *p = &a;\n\nprintf(\"%d\\n\", a);    /* 3 */\nprintf(\"%d\\n\", *p);   /* 3 */\n*p = 10;\nprintf(\"%d\\n\", a);    /* 10 */\n```\n\n- `p` เก็บที่อยู่ของ `a`\n- `*p` คือค่าที่ `p` ชี้\n- `p` กับ `a` เป็นคนละตัวแปร\n\n## 2. ประกาศ pointer\n\n```c\nint *p;      /* pointer to int */\ndouble *q;   /* pointer to double */\n```\n\n`int *p, q;` มี pointer แค่ `p`; `q` เป็น int\n\n## 3. ส่ง pointer เข้าฟังก์ชัน\n\n```c\nvoid swap(int *px, int *py) {\n    int t = *px;\n    *px = *py;\n    *py = t;\n}\n\nint main(void) {\n    int a = 1, b = 2;\n    swap(&a, &b);   /* a=2, b=1 */\n}\n```\n\n## 4. กับดัก\n\n```c\nint *p;\n*p = 5;      /* ห้าม: p ยังไม่ชี้ที่ใด */\n```\n\npointer ต้องชี้ตัวแปรจริงหรือ `NULL` ก่อนใช้\n\n## 5. ลองเขียน\n\nเขียน `swap` ให้สลับค่าของ `a` และ `b`",
+      "starter_code": "#include <stdio.h>\n\nvoid swap(int *px, int *py);\n\nint main(void)\n{\n    int a, b;\n    scanf(\"%d %d\", &a, &b);\n    swap(&a, &b);\n    printf(\"%d %d\\n\", a, b);\n    return 0;\n}\n\n/* เขียนฟังก์ชัน swap ตรงนี้ */",
+      "expected_output": "5 3",
+      "stdin": "3 5",
+      "challenge_md": "เขียน `swap` ให้สลับค่าจริงของ a และ b",
+      "order_index": 5,
+      "is_published": true,
+      "questions": [
+        {
+          "id": "q5-1",
+          "type": "mcq",
+          "prompt_md": "`int *p = &a;` ข้อใดถูก?",
+          "choices": [
+            "p เก็บที่อยู่ของ a",
+            "p เก็บค่าของ a",
+            "p คือ a",
+            "p เก็บสำเนาของ a"
+          ],
+          "answer": 0,
+          "explanation_md": "pointer เก็บที่อยู่"
+        },
+        {
+          "id": "q5-2",
+          "type": "mcq",
+          "prompt_md": "`*p` หมายถึงอะไร?",
+          "choices": [
+            "ค่าที่ p ชี้ไป",
+            "ที่อยู่ของ p",
+            "ชื่อตัวแปร p",
+            "ขนาดของ p"
+          ],
+          "answer": 0,
+          "explanation_md": "`*` คือ dereference"
+        },
+        {
+          "id": "q5-3",
+          "type": "mcq",
+          "prompt_md": "ถ้าต้องการให้ฟังก์ชันแก้ `a` ใน main ควรส่งอะไร?",
+          "choices": [
+            "`&a`",
+            "`a`",
+            "`*a`",
+            "`sizeof(a)`"
+          ],
+          "answer": 0,
+          "explanation_md": "ส่งที่อยู่เพื่อให้ฟังก์ชันเข้าถึงตัวแปรจริง"
+        }
+      ]
+    }
+  ]
+}

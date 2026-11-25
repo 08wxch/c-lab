@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f0ece4">
+<meta name="description" content="C LAB — เรียนภาษาซีจากหนังสือและข้อสอบของคุณ พร้อม editor, console และ AI tutor ที่เห็นโค้ดปัจจุบัน">
+<title>C LAB — เขียน C ให้เห็นภาพ</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="/"><span class="brand-mark">C</span><span>C LAB<small>LEARN C BY RUNNING IT</small></span></a>
+  <nav>
+    <a class="btn ghost sm" href="#course">บทเรียน</a>
+    <a class="btn ghost sm" href="#how">วิธีเรียน</a>
+    <a class="btn primary sm" id="navCta" href="/login.html">เข้าสู่ระบบ</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="rule"></div>
+    <h1>เขียน C<br>ให้เห็น<br><em>ภาพ</em></h1>
+    <p class="lede">อ่านแนวคิดสั้น ๆ ทางซ้าย เขียนและรันโค้ดตรงกลาง แล้วถาม AI ที่เห็นทั้งบทเรียน โค้ด และ error ปัจจุบัน — ไม่ต้องสลับแท็บไปมา</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="/login.html">เริ่มเรียนฟรี <span style="width:15px;height:15px;display:inline-block"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 10h12M11 5l5 5-5 5"/></svg></span></a>
+      <span class="hero-note"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 2.5l2.1 4.3 4.7.7-3.4 3.3.8 4.7-4.2-2.2-4.2 2.2.8-4.7L3.2 7.5l4.7-.7z"/></svg> 5 บทเรียนเริ่มต้น · 15 คำถาม</span>
+    </div>
+  </div>
+  <div class="code-stage" aria-label="ตัวอย่างโค้ดภาษา C">
+    <div class="code-top"><div class="dots"><i></i><i></i><i></i></div><span>pointer.c</span><span>run</span></div>
+    <div class="code-body"><span class="ln">1</span><span class="kw">int</span> a = <span class="num">3</span>;<br><span class="ln">2</span><span class="kw">int</span> *p = &amp;a;<br><span class="ln">3</span><br><span class="ln">4</span>printf(<span class="str">"%d"</span>, *p);<br><span class="ln">5</span>*p = <span class="num">10</span>;<br><span class="ln">6</span>printf(<span class="str">"%d"</span>, a);<br><span class="ln">7</span><span class="cm">// p ชี้ a ตัวจริง</span></div>
+    <div class="console"><b>output</b><br><span class="ok">3</span><br><span class="ok">10</span><br><span style="color:#788276">process exited 0 · 0.03s</span></div>
+  </div>
+</section>
+
+<h2 class="sr">วิธีเรียนและหลักสูตร</h2>
+<div class="hero-strip"><div class="hero-strip-inner">
+  <div class="step"><span class="n">1</span><div><h3>อ่านให้เห็นภาพ</h3><p>เนื้อหาจากหนังสือและสไลด์ สรุปเป็นภาษาที่คนเริ่มจากศูนย์อ่านได้</p></div></div>
+  <div class="step"><span class="n">2</span><div><h3>รันแล้วเห็นผล</h3><p>editor + console จริง แก้ทีละบรรทัด เห็น output และ compile error ทันที</p></div></div>
+  <div class="step"><span class="n">3</span><div><h3>ถาม AI ที่เห็นบริบท</h3><p>AI รู้ว่ากำลังทำข้อไหน โค้ดอะไร และพังตรงไหน — ไม่ต้อง copy ไปถามที่อื่น</p></div></div>
+</div></div>
+
+<section class="landing-section" id="course">
+  <div class="section-head"><div><h2>หลักสูตรเริ่มต้น</h2><p>เรียงจากแนวคิดที่ใช้บ่อยที่สุด ไปสู่ pointer ที่คนพลาดมากที่สุด</p></div><span class="pill">5 บท · 15 คำถาม</span></div>
+  <div class="course-board">
+    <div class="course-board-head"><h3>C 语言 · 5–8</h3><span>อ่าน 20–30 นาที / บท</span></div>
+    <a class="lesson-row" href="/login.html"><span class="num">01</span><div><h4>ฟังก์ชัน: ห่อความคิดให้เรียกใช้ซ้ำ</h4><p>พารามิเตอร์ · return · pass by value · static local</p></div><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4l6 6-6 6"/></svg></span></a>
+    <a class="lesson-row" href="/login.html"><span class="num">02</span><div><h4>数据类型: บิตที่กลายเป็นความหมาย</h4><p>补码 · char/ASCII · float · printf/scanf</p></div><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4l6 6-6 6"/></svg></span></a>
+    <a class="lesson-row" href="/login.html"><span class="num">03</span><div><h4>运算符: ลำดับและ short-circuit</h4><p>precedence · &&/|| · bitwise · กับดักที่ออกสอบ</p></div><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4l6 6-6 6"/></svg></span></a>
+    <a class="lesson-row" href="/login.html"><span class="num">04</span><div><h4>数组: ข้อมูลหลายตัวที่มี下标</h4><p>index · sizeof · 2D array · row-major</p></div><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4l6 6-6 6"/></svg></span></a>
+    <a class="lesson-row" href="/login.html"><span class="num">05</span><div><h4>指针: ที่อยู่คือกุญแจ</h4><p>& · * · swap · กับดัก wild pointer</p></div><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 4l6 6-6 6"/></svg></span></a>
+  </div>
+</section>
+
+<section class="landing-section" id="how" style="padding-top:0">
+  <div class="section-head"><div><h2>เรียนแบบไหน</h2><p>ไม่ใช่คอร์สวิดีโอ ไม่ใช่ที่อ่านอย่างเดียว — เป็นโต๊ะทำงานจริง</p></div></div>
+  <div style="display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:stretch">
+    <div class="panel" style="padding:28px"><h2 style="font-size:22px;max-width:18ch;line-height:1.25;letter-spacing:-.03em">ทุกครั้งที่รัน ระบบเก็บ “บริบท” ให้ AI ใช้ตอบ</h2><p style="color:var(--muted);font-size:13px;margin-top:12px;max-width:48ch;line-height:1.75">บทเรียน · คำถามที่เปิด · โค้ด · stdin · output · error ถูกส่งเป็นบริบทเดียว AI จึงตอบเรื่องที่กำลังเจอ ไม่ใช่ตอบกว้าง ๆ</p><div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:18px"><span class="pill live">lesson context</span><span class="pill live">code</span><span class="pill live">stdout / stderr</span></div></div>
+    <div class="panel" style="padding:28px;background:var(--code);color:var(--code-ink);border-color:#2b312a"><div style="font:11px ui-monospace,monospace;color:#91a08b;letter-spacing:.08em">AI CONTEXT PREVIEW</div><div style="font:12px/1.7 ui-monospace,monospace;margin-top:14px;color:#c2d0bd">lesson: arrays<br>question: q4-1<br>code: 18 lines<br>last error: line 7</div><div style="margin-top:18px;color:#9eac98;font-size:12px">“บรรทัด 7 เขียนนอกขอบเขตอาร์เรย์ — เริ่มจากเช็ก `i < n` ก่อน”</div></div>
+  </div>
+</section>
+</main>
+<footer class="site-foot"><span>C LAB · เรียน C จากหนังสือและข้อสอบของคุณ</span><span>2026</span></footer>
+<script src="/assets/app.js"></script>
+<script>
+  if (CC.token) { document.getElementById('navCta').textContent = 'เข้าเรียน'; document.getElementById('navCta').href = '/learn.html'; }
+</script>
+</body>
+</html>

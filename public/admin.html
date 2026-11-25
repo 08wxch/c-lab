@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>หลังบ้าน · C LAB</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<div class="admin-shell">
+  <aside class="admin-nav">
+    <a class="brand" href="/learn.html"><span class="brand-mark">C</span><span>C LAB<small>ADMIN CONSOLE</small></span></a>
+    <nav class="rail-nav" id="adminNav">
+      <a class="rail-link active" href="#overview" data-tab="overview">ภาพรวม</a>
+      <a class="rail-link" href="#lessons" data-tab="lessons">บทเรียน</a>
+      <a class="rail-link" href="#users" data-tab="users">ผู้ใช้</a>
+      <a class="rail-link" href="#settings" data-tab="settings">ตั้งค่า AI</a>
+    </nav>
+    <div class="rail-bottom"><a class="rail-link" href="/learn.html" style="color:#aaa59a">กลับโต๊ะเรียน</a><a class="rail-link" href="#" id="logout" style="color:#aaa59a">ออกจากระบบ</a><div style="height:10px"></div><div id="adminUser"></div></div>
+  </aside>
+  <main class="admin-main" id="adminMain"><div class="loading-page"><span class="spinner" style="border-color:#c9c0af;border-top-color:#0b0b0b"></span></div></main>
+</div>
+
+<dialog id="lessonDialog" style="width:min(760px,94vw);border:1px solid #c9c0af;border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.22)">
+  <form method="dialog" id="lessonForm" style="margin:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px 22px;border-bottom:1px solid var(--line)"><h2 id="dialogTitle" style="font-size:20px;letter-spacing:-.03em">แก้ไขบทเรียน</h2><button class="btn ghost sm" value="cancel" type="submit">ปิด</button></div>
+    <div style="padding:20px 22px;max-height:70vh;overflow:auto">
+      <input type="hidden" id="f_id">
+      <div style="display:grid;grid-template-columns:1fr 120px;gap:12px">
+        <div class="field"><label>ชื่อบทเรียน</label><input class="input" id="f_title" required></div>
+        <div class="field"><label>บทที่</label><input class="input" id="f_chapter" placeholder="6"></div>
+      </div>
+      <div class="field"><label>สรุปสั้น</label><input class="input" id="f_summary"></div>
+      <div class="field"><label>เนื้อหา Markdown</label><textarea class="input" id="f_content" rows="8" style="font-family:ui-monospace,monospace;font-size:12px"></textarea></div>
+      <div class="field"><label>Starter code</label><textarea class="input" id="f_starter" rows="8" style="font-family:ui-monospace,monospace;font-size:12px"></textarea></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="field"><label>STDIN</label><input class="input" id="f_stdin"></div>
+        <div class="field"><label>Expected output</label><input class="input" id="f_expected"></div>
+      </div>
+      <div class="field"><label>Challenge note</label><input class="input" id="f_challenge"></div>
+      <div style="display:grid;grid-template-columns:110px 1fr;gap:12px;align-items:end">
+        <div class="field"><label>ลำดับ</label><input class="input" id="f_order" type="number" min="1"></div>
+        <label style="display:flex;align-items:center;gap:8px;font-size:12px;padding-bottom:12px"><input type="checkbox" id="f_published" checked> เผยแพร่</label>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:14px 22px;border-top:1px solid var(--line)"><button class="btn" value="cancel" type="submit">ยกเลิก</button><button class="btn primary" id="saveLesson" type="button">บันทึก</button></div>
+  </form>
+</dialog>
+<script src="/assets/app.js"></script>
+<script src="/assets/admin.js"></script>
+</body>
+</html>

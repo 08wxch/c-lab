@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f0ece4">
+<title>บทเรียน · C LAB</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<div class="lesson-page" id="lessonPage">
+  <header class="lesson-top">
+    <a class="brand" href="/learn.html" style="flex:none"><span class="brand-mark">C</span><span>C LAB</span></a>
+    <span class="lesson-title-min" id="topTitle">กำลังโหลด…</span>
+    <span class="spacer"></span>
+    <button class="btn ghost sm" id="completeBtn" type="button">ทำบทนี้เสร็จ</button>
+    <button class="btn ghost sm" id="chatToggle" type="button">AI</button>
+    <a class="btn ghost sm" href="/learn.html" title="กลับโต๊ะเรียน">กลับ</a>
+  </header>
+  <div class="lesson-workspace">
+    <section class="pane lesson-pane">
+      <div class="pane-head"><span>บทเรียน</span><span id="chapterLabel"></span></div>
+      <div class="pane-scroll" id="lessonContent"><div class="skeleton" style="height:400px"></div></div>
+    </section>
+    <section class="pane editor-pane">
+      <div class="pane-head"><span>Code · C11</span><span id="engineLabel">docker / gcc</span></div>
+      <div class="editor-wrap">
+        <div class="editor-toolbar">
+          <span class="file"><i></i>main.c</span>
+          <button class="btn sm" id="checkBtn" type="button" title="รันและเทียบผลลัพธ์"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 10.5l4 4 8-9"/></svg></button>
+          <button class="btn sm" id="debugBtn" type="button" title="รันแล้วให้ AI ช่วย debug">Debug</button>
+          <button class="btn primary sm" id="runBtn" type="button"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M7 4.8v10.4l8-5.2z"/></svg> Run</button>
+        </div>
+        <div class="code-editor" id="codeEditor">
+          <div class="gutter" id="gutter">1</div>
+          <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="โค้ดภาษา C" aria-autocomplete="list" aria-controls="autocomplete"></textarea>
+          <div class="autocomplete hidden" id="autocomplete" role="listbox" aria-label="คำแนะนำโค้ด"></div>
+        </div>
+        <div class="stdin-row"><label for="stdin">STDIN</label><textarea id="stdin" rows="1" placeholder="ข้อมูลนำเข้า (ถ้ามี)" spellcheck="false"></textarea></div>
+        <div class="console-wrap"><div class="console-head"><span>Console</span><span class="run-status" id="runStatus">พร้อม</span></div><pre id="output">$ Run เพื่อดูผลลัพธ์</pre></div>
+      </div>
+    </section>
+    <aside class="ai-pane" id="aiPane">
+      <div class="pane-head"><span>AI Tutor</span><button class="btn ghost sm" id="chatClose" type="button" style="padding:3px 6px"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 5l10 10M15 5L5 15"/></svg></button></div>
+      <div class="ai-context" id="aiContext"></div>
+      <div class="chat-scroll" id="chatScroll"></div>
+      <div class="chat-input"><textarea id="chatText" placeholder="ถามเรื่องบทเรียนหรือโค้ดนี้…" rows="2"></textarea><div class="chat-actions"><span>AI เห็นโค้ดและผลรันล่าสุด</span><button class="btn primary sm" id="sendBtn" type="button">ส่ง</button></div></div>
+    </aside>
+  </div>
+</div>
+<script src="/assets/app.js"></script>
+<script src="/assets/lesson.js"></script>
+</body>
+</html>

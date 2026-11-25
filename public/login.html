@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f0ece4">
+<title>เข้าสู่ระบบ · C LAB</title>
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+<div class="auth">
+  <aside class="auth-aside">
+    <a class="brand" href="/"><span class="brand-mark">C</span><span>C LAB<small>LEARN C BY RUNNING IT</small></span></a>
+    <div class="auth-quote">อ่านโค้ด<br>ให้เห็น<br><em>หน่วยความจำ</em></div>
+    <div class="tiny">ฟังก์ชัน · 数据类型 · 数组 · 指针<br>เรียนจากหนังสือและข้อสอบของคุณ</div>
+  </aside>
+  <main class="auth-main">
+    <div class="auth-card">
+      <h1 id="authTitle">กลับมาเรียนต่อ</h1>
+      <p class="sub" id="authSub">เข้าสู่ระบบเพื่อเรียนและบันทึกความคืบหน้า</p>
+      <div id="authError" class="error-box hidden"></div>
+      <form id="authForm" autocomplete="on">
+        <div class="field"><label for="email">อีเมล</label><input class="input" id="email" type="email" required placeholder="you@example.com" autocomplete="email"></div>
+        <div class="field"><label for="password">รหัสผ่าน</label><input class="input" id="password" type="password" required minlength="6" placeholder="อย่างน้อย 6 ตัวอักษร" autocomplete="current-password"></div>
+        <div class="auth-actions"><button class="btn primary" id="submitBtn" type="submit">เข้าสู่ระบบ</button><button class="btn ghost sm" id="modeBtn" type="button">สร้างบัญชี</button></div>
+      </form>
+      <div id="demoBox" class="hidden">
+        <div class="notice" style="margin-bottom:14px"><strong>โหมดตัวอย่าง</strong> — ยังไม่ได้ตั้งค่า Supabase จึงเข้าดูได้ทันที ข้อมูลจะเก็บในเครื่องนี้</div>
+        <button class="btn primary full" id="demoBtn" type="button" style="width:100%">เข้าโหมดตัวอย่าง</button>
+      </div>
+      <div class="auth-alt">
+        <span id="configHint">กำลังตรวจสอบการเชื่อมต่อ…</span><br>
+        <a class="link" href="/">กลับหน้าแรก</a>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/assets/supabase.js"></script>
+<script src="/assets/app.js"></script>
+<script src="/assets/login.js"></script>
+</body>
+</html>
