@@ -100,8 +100,46 @@ function updateGutter() {
 function bind() {
   const code = qs('code');
   code.addEventListener('input', () => { updateGutter(); updateContext(); scheduleSave(); });
+  code.addEventListener('scroll', () => { qs('gutter').scrollTop = code.scrollTop; });
   code.addEventListener('keydown', e => {
-    if (e.key === 'Tab') { e.preventDefault(); const s = code.selectionStart, en = code.selectionEnd; code.setRangeText('    ', s, en, 'end'); updateGutter(); }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const start = code.selectionStart, end = code.selectionEnd;
+      const before = code.value.slice(0, start);
+      const lineStart = before.lastIndexOf('\n') + 1;
+      const line = before.slice(lineStart);
+      const indent = (line.match(/^[ \t]*/) || [''])[0];
+      const rest = code.value.slice(end);
+      const opens = /\{\s*$/.test(line);
+      if (opens && /^\s*\}/.test(rest)) {
+        const insert = '\n' + indent + '    \n' + indent;
+        code.setRangeText(insert, start, end, 'end');
+        const caret = start + 1 + indent.length + 4;
+        code.setSelectionRange(caret, caret);
+      } else {
+        const insert = '\n' + indent + (opens ? '    ' : '');
+        code.setRangeText(insert, start, end, 'end');
+      }
+      updateGutter(); updateContext(); scheduleSave(); hideAutocomplete();
+      return;
+    }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const start = code.selectionStart, end = code.selectionEnd;
+      if (e.shiftKey) {
+        const before = code.value.slice(0, start);
+        const lineStart = before.lastIndexOf('\n') + 1;
+        const line = code.value.slice(lineStart, start);
+        const cut = line.match(/^ {1,4}/);
+        if (cut) {
+          code.setRangeText('', lineStart, lineStart + cut[0].length, 'end');
+          code.setSelectionRange(Math.max(lineStart, start - cut[0].length), Math.max(lineStart, end - cut[0].length));
+        }
+      } else {
+        code.setRangeText('    ', start, end, 'end');
+      }
+      updateGutter(); updateContext(); scheduleSave();
+    }
     if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); run(false); }
   });
   qs('runBtn').addEventListener('click', () => run(false));
